@@ -1,0 +1,12 @@
+Makefile
+Makefile.conf
+.Makefile.d
+*.vo
+*.vok
+*.vos
+*.glob
+*.aux
+*.v.d
+.*.aux
+.coq-native/
+.DS_Store

@@ -547,7 +547,9 @@ Proof.
   - refine (
     let '(res, (useful, energy)) := instrumentation_function (fun _ => prop cenv) in
     match res with
-    | true => (Some true, Z.of_nat energy) 
+    | true =>
+        let '(result, child_energy) := IHcprop cenv fenv in
+        (result, (Z.of_nat energy + child_energy)%Z)
     | _ => (None, Z.of_nat energy)
     end).
   - refine (
@@ -774,7 +776,7 @@ Definition sample_sized (A : Type) (g : G A) (sz: nat) : A :=
   end.
 
 Definition invoke {A : Type} (g : G A) : A :=
-sample_sized A g 0.
+sample_sized A g 5.
 
 Open Scope nat_scope.
 

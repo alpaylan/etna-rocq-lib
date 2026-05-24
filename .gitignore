@@ -10,3 +10,10 @@ Makefile.conf
 .*.aux
 .coq-native/
 .DS_Store
+
+# Local/generated workspace files.
+/etna.log
+/Lib/
+/example.ml
+/examples/*.ml
+/examples/*.mli

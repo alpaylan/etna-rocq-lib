@@ -78,7 +78,21 @@ Import FIFOQueue.
 #[global] Instance FIFOSeedPool {A F: Type}  `{Scalar F} : @SeedPool A F (FIFOQueue.t (@Seed A F)) :=
 {| mkPool _ := FIFOQueue.mkFIFOQueue tt;
   invest seed pool := match seed with
+                      (*! fifo_seed_pool_energy *)
                       | (a, f) => FIFOQueue.push (mkSeed a f 100%Z) pool
+                      (*!! fifo_energy_1 *)
+                      (*!
+                      | (a, f) => FIFOQueue.push (mkSeed a f 1%Z) pool
+                      *)
+                      (*!! fifo_energy_10 *)
+                      (*!
+                      | (a, f) => FIFOQueue.push (mkSeed a f 10%Z) pool
+                      *)
+                      (*!! fifo_energy_1000 *)
+                      (*!
+                      | (a, f) => FIFOQueue.push (mkSeed a f 1000%Z) pool
+                      *)
+                      (* !*)
                       end ;
   revise pool :=  match FIFOQueue.pop pool with
                   | None => pool
@@ -111,7 +125,21 @@ Import FILOQueue.
 #[global] Instance FILOSeedPool {A F: Type}  `{Scalar F} : @SeedPool A F (FILOQueue.t (@Seed A F)) :=
 {| mkPool _ := FILOQueue.mkFILOQueue tt;
   invest seed pool := match seed with
+                      (*! filo_seed_pool_energy *)
+                      | (a, f) => FILOQueue.push (mkSeed a f 100%Z) pool
+                      (*!! filo_energy_1 *)
+                      (*!
                       | (a, f) => FILOQueue.push (mkSeed a f 1%Z) pool
+                      *)
+                      (*!! filo_energy_10 *)
+                      (*!
+                      | (a, f) => FILOQueue.push (mkSeed a f 10%Z) pool
+                      *)
+                      (*!! filo_energy_1000 *)
+                      (*!
+                      | (a, f) => FILOQueue.push (mkSeed a f 1000%Z) pool
+                      *)
+                      (* !*)
                       end ;
   revise pool :=  match FILOQueue.pop pool with
                   | None => pool

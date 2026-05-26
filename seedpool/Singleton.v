@@ -25,7 +25,21 @@ Record SingletonPool {A F: Type} := {
 #[global] Instance DynamicMonotonicSingletonPool {A F: Type} : @SeedPool A F (@SingletonPool A F) :=
   {| mkPool _ := {| seed := None |};
     invest seed pool := match seed with 
+                        (*! dynamic_monotonic_seed_pool_energy *)
+                        | (a, f) => {| seed := Some (mkSeed a f 100) |}
+                        (*!! dynamic_monotonic_energy_1 *)
+                        (*!
                         | (a, f) => {| seed := Some (mkSeed a f 1) |}
+                        *)
+                        (*!! dynamic_monotonic_energy_10 *)
+                        (*!
+                        | (a, f) => {| seed := Some (mkSeed a f 10) |}
+                        *)
+                        (*!! dynamic_monotonic_energy_1000 *)
+                        (*!
+                        | (a, f) => {| seed := Some (mkSeed a f 1000) |}
+                        *)
+                        (* !*)
                         end ;
     revise pool :=  match seed pool with
                     | None => pool
@@ -46,7 +60,21 @@ Record SingletonPool {A F: Type} := {
 #[global] Instance DynamicResettingSingletonPool {A F: Type} : @SeedPool A F (@SingletonPool A F) :=
 {| mkPool _ := {| seed := None |};
     invest seed pool := match seed with 
+                        (*! dynamic_resetting_seed_pool_energy *)
+                        | (a, f) => {| seed := Some (mkSeed a f 100) |}
+                        (*!! dynamic_resetting_energy_1 *)
+                        (*!
                         | (a, f) => {| seed := Some (mkSeed a f 1) |}
+                        *)
+                        (*!! dynamic_resetting_energy_10 *)
+                        (*!
+                        | (a, f) => {| seed := Some (mkSeed a f 10) |}
+                        *)
+                        (*!! dynamic_resetting_energy_1000 *)
+                        (*!
+                        | (a, f) => {| seed := Some (mkSeed a f 1000) |}
+                        *)
+                        (* !*)
                         end ;
     revise pool := match seed pool with
                    | None => pool

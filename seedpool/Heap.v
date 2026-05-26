@@ -115,7 +115,21 @@ End LeftistHeap.
 #[global] Instance HeapSeedPool {A F: Type} `{Scalar F} : @SeedPool A F (@LeftistHeap.Heap A F) :=
 {| mkPool _ := LeftistHeap.empty tt;
   invest seed pool := match seed with
+                      (*! heap_seed_pool_enery *)
                       | (a, f) => LeftistHeap.insert (mkSeed a f 100%Z) pool
+                      (*!! heap_energy_1 *)
+                      (*!
+                      | (a, f) => LeftistHeap.insert (mkSeed a f 1%Z) pool
+                      *)
+                      (*!! heap_energy_10 *)
+                      (*!
+                      | (a, f) => LeftistHeap.insert (mkSeed a f 10%Z) pool
+                      *)
+                      (*!! heap_energy_1000 *)
+                      (*!
+                      | (a, f) => LeftistHeap.insert (mkSeed a f 1000%Z) pool
+                      *)
+                      (* !*)
                       end ;
   revise pool :=  match LeftistHeap.extractMax pool with
                   | None => pool
